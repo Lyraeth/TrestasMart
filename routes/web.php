@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Items\ItemsController;
+use App\Http\Controllers\Items\ItemsStoreController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +28,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+// Items
+Route::get('/items', ItemsController::class)->name('items.index');
+Route::get('/additems', [ItemsController::class, 'add'])->name('items.partials.add-items');
+Route::post('items', ItemsStoreController::class)->name('items.store');
